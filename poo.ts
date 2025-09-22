@@ -1,7 +1,7 @@
 /**
  * Clase Usuario: con atributo, encapsulamiento, y comportamientos
  */
-class Usuario {
+export class Usuario {
     protected name:string;
     
     constructor(name:string){
@@ -25,7 +25,7 @@ class Usuario {
 /**
  * Clase Estudiante: Herencia simple y polimorfirmo
  */
-class Estudiante extends Usuario {
+export class Estudiante extends Usuario {
     private carrera: string;
 
     constructor(nombre: string, carrera: string) {
@@ -48,14 +48,14 @@ class Estudiante extends Usuario {
 /**
  * Interface Imprimible: Características para herencia múltiple
  */
-interface Imprimible {
+export interface Imprimible {
     imprimir(): void;
 }
 
 /**
  * Interface Exportable: Características para herencia múltiple
  */
-interface Exportable {
+export interface Exportable {
     tipo: string;
     exportar(tipo: string): void;
 }
@@ -63,7 +63,7 @@ interface Exportable {
 /**
  * Clase Documento: Herencia múltiple con el uso de interfaces
  */
-class Documento implements Imprimible, Exportable{
+export class Documento implements Imprimible, Exportable{
     private nombre: string;
     tipo: string; // heredado de Exportable
 
@@ -80,20 +80,3 @@ class Documento implements Imprimible, Exportable{
     }
 }
 
-const usuario1 = new Usuario("Diana");
-usuario1.login();
-usuario1.propName = "Pepe";
-console.log(`Se ha modificado nombre a ${usuario1.propName}`)
-const alumno1 = new Estudiante("María", "Analista de Sistemas");
-alumno1.login();
-alumno1.estudiar();
-
-const doc = new Documento("doc.txt", "texto"); // doc imprimible y exportable
-doc.imprimir();
-doc.exportar("pdf");
-
-const imp : Imprimible = new Documento("doc.xls", "planilla"); // doc solo imprimible
-imp.imprimir();
-
-const exp : Exportable = new Documento("texto.doc", "doc"); // doc solo exportable
-exp.exportar("png");
